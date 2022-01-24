@@ -2,7 +2,7 @@
   "name": "calculator",
   "version": "0.1.0",
   "private": true,
-  "main": "index.js",
+  "main": "index.jsx",
   "author": "Junghoon-P <qkr0454@naver.com>",
   "license": "MIT",
   "dependencies": {

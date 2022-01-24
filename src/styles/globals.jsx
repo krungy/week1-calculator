@@ -1,3 +1,6 @@
+import { createGlobalStyle } from 'styled-components';
+
+const GlobalStyle = createGlobalStyle`
 html,
 body,
 div,
@@ -143,3 +146,6 @@ ul {
   clip: rect(0, 0, 0, 0);
   clip-path: inset(50%);
 }
+`;
+
+export default GlobalStyle;
