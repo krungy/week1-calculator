@@ -62,6 +62,7 @@ const ButtonContainer = styled.button`
 
 const ResultContainer = styled.div`
   margin-top: 82px;
+  font-size: 16px;
   color: ${({ color }) => color};
 `;
 
