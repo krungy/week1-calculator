@@ -1,7 +1,12 @@
 import React from 'react';
+import SecondCalcPage from '@pages/SecondCalcPage/SecondCalcPage';
 
 const App = () => {
-  return <></>;
+  return (
+    <>
+      <SecondCalcPage />
+    </>
+  );
 };
 
 export default App;
