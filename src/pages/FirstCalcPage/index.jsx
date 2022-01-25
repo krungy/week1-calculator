@@ -94,7 +94,6 @@ const FirstCalcPage = () => {
 
   const handleDropdown = (list) => {
     const entries = Object.entries(list);
-    console.log(entries);
     const menuList = entries.map(([key, _], index) => (
       <option value={key} key={index}>
         {calcOneCountryList[key]}
@@ -143,7 +142,7 @@ const FirstCalcPage = () => {
       .toString()
       .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',');
 
-    return inputValue === '' || inputValue > 10000 ? (
+    return inputValue === '' || !(inputValue >= 0 && inputValue <= 10000) ? (
       <ResultContainer color="red">
         올바른 송금액을 입력해주세요.
       </ResultContainer>
@@ -154,7 +153,6 @@ const FirstCalcPage = () => {
     );
   }, [initialData, currentCountry, inputValue]);
 
-  console.log(initialData);
   return (
     <FirstCalcPageContainer>
       <HeaderContainer>환율 계산</HeaderContainer>
