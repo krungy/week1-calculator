@@ -25,23 +25,22 @@ const SecondCalcPage = () => {
 
 const Container = styled.section`
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 25rem;
-  width: 20rem;
-  border: 1px solid red;
-  background-color: aqua;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 `;
 
 const Wrap = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  height: 20rem;
-  width: 15rem;
-  background-color: beige;
+  padding: 10px;
+  border: 3px solid black;
 `;
 
 export default SecondCalcPage;

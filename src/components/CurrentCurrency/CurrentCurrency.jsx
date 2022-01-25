@@ -20,12 +20,17 @@ const CurrentCurrency = ({ source }) => {
   };
 
   const handleCurrencyClick = (e) => {
-    console.log(e.target.innerText);
+    setSelected(e.target.innerText);
   };
 
   useEffect(() => {
+    if (source === selected) {
+      setSelected(
+        RATE_LIST.filter((rate) => rate.country !== source)[0].country,
+      );
+    }
     getApi();
-  }, [selected]);
+  }, [source, selected]);
 
   return (
     <Wrap>
@@ -43,17 +48,20 @@ const CurrentCurrency = ({ source }) => {
           </React.Fragment>
         ))}
       </CurrencyBtnWrap>
-      <div>{selected}</div>
-      <div>
-        <p>{`${selected} 2,000 !FIXME`}</p>
-        <p>기준일 : </p>
+      <CurrencyResult>
+        <h2>{`${selected} 2,000.00 !FIXME`}</h2>
+        <h3>기준일</h3>
         <p>{date}</p>
-      </div>
+      </CurrencyResult>
     </Wrap>
   );
 };
 
 const Wrap = styled.article`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
   border: 3px solid black;
 `;
 
@@ -62,12 +70,37 @@ const CurrencyBtnWrap = styled.div`
 `;
 
 const CurrencyBtn = styled.button`
-  background-color: red;
+  width: 100%;
+  padding: 0.3rem 0.5rem;
+  font-size: 1rem;
+  font-weight: ${(props) => (props.selected ? 'bold' : 'normal')};
+  color: ${(props) => (props.selected ? 'black' : 'gray')};
   border-right: 3px solid black;
+  border-bottom: ${(props) =>
+    props.selected ? '3px solid transparent' : '3px solid black'};
   &:last-child {
     border-right: none;
   }
-  border-bottom: ${(props) => (props.selected ? 'none' : '3px solid black')}; ;
+`;
+
+const CurrencyResult = styled.div`
+  padding: 1.5rem;
+
+  h2 {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
 `;
 
 export default CurrentCurrency;

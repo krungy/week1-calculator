@@ -39,7 +39,23 @@ const SelectCurrency = ({ setSource, setInputValue, inputValue }) => {
 };
 
 const Wrap = styled.div`
-  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 1rem;
+
+  input {
+    padding: 0.3rem 0.5rem;
+    font-size: 1rem;
+    border: 3px solid black;
+    margin-right: 1rem;
+  }
+
+  select {
+    padding: 0.3rem 0.5rem;
+    font-size: 1rem;
+    border: 3px solid black;
+  }
 `;
 
 export default SelectCurrency;
