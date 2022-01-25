@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { RATE_LIST, MONTHS } from '@utils/constants';
+import { RATE_LIST } from '@utils/constants';
+import { convertTimestampToDate } from '@utils/date';
 import { request } from '@api/api';
 
 const CurrentCurrency = ({ source }) => {
@@ -10,29 +11,16 @@ const CurrentCurrency = ({ source }) => {
   const getApi = async () => {
     try {
       const { timestamp, quotes } = await request();
-      let date = new Date(timestamp * 1000); // UNIX 시간을 JS 시간으로 변경
-      console.log(
-        timestamp,
-        date,
-        `${date.getFullYear()}-${MONTHS[date.getMonth()]}-${date.getDate()}`,
-      ); // TODO: utils로 빼기
-      setDate(
-        `${date.getFullYear()}-${MONTHS[date.getMonth()]}-${date.getDate()}`,
-      );
-      /* NOTE: 문제 찾았음
-        timestamp가 갱신되지 않고 있었습니다
-        아마 어제 저 서버 구동 끝난 시간에 종료된거 아닌가 싶습니다
-        그러면 기준일이 어제 시간으로 나오는 게 맞는 것 같아요
-        FAQ: How often are exchange rates refreshed?
-        Spot exchange rate data is collected within the 60-second market window.
-        Depending on your Subscription Plan, quotes are refreshed every day (Free Plan)
-      */
-      // 2022-Jan-01
+      setDate(convertTimestampToDate(timestamp));
       // TODO: setCurrency(utils)
     } catch (e) {
       console.log(e);
       // TODO: 에러 핸들링
     }
+  };
+
+  const handleCurrencyClick = (e) => {
+    console.log(e.target.innerText);
   };
 
   useEffect(() => {
@@ -43,11 +31,16 @@ const CurrentCurrency = ({ source }) => {
     <Wrap>
       <CurrencyBtnWrap>
         {RATE_LIST.map((data, idx) => (
-          <div key={idx}>
+          <React.Fragment key={idx}>
             {source !== data.country && (
-              <CurrencyBtn>{data.country}</CurrencyBtn>
+              <CurrencyBtn
+                selected={selected === data.country}
+                onClick={handleCurrencyClick}
+              >
+                {data.country}
+              </CurrencyBtn>
             )}
-          </div>
+          </React.Fragment>
         ))}
       </CurrencyBtnWrap>
       <div>{selected}</div>
@@ -69,8 +62,12 @@ const CurrencyBtnWrap = styled.div`
 `;
 
 const CurrencyBtn = styled.button`
-  background-color: #fff;
-  border-bottom: none;
+  background-color: red;
+  border-right: 3px solid black;
+  &:last-child {
+    border-right: none;
+  }
+  border-bottom: ${(props) => (props.selected ? 'none' : '3px solid black')}; ;
 `;
 
 export default CurrentCurrency;
