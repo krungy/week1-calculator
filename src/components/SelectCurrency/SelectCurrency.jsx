@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { RATE_LIST } from '@utils/constants';
+import { SECOND_COUNTRY_LIST } from '@utils/constants';
 
 const SelectCurrency = ({ handleInput, inputValue, handleOptionChange }) => {
   return (
@@ -12,10 +12,10 @@ const SelectCurrency = ({ handleInput, inputValue, handleOptionChange }) => {
         value={inputValue}
       />
       <select name="currency" onChange={handleOptionChange}>
-        {RATE_LIST.map((data, idx) => {
+        {SECOND_COUNTRY_LIST.map((data, idx) => {
           return (
-            <option value={data.country} key={idx}>
-              {data.country}
+            <option value={data} key={idx}>
+              {data}
             </option>
           );
         })}

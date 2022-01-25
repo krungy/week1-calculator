@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
-import { RATE_LIST } from '@utils/constants';
+import { SECOND_COUNTRY_LIST } from '@utils/constants';
 import { convertTimestampToDate } from '@utils/date';
 import { convertCurrency } from '@utils/currency';
-import { request } from '@api/api';
+import { requestCalcTwo } from '@api/api';
 
 const CurrentCurrency = ({ source, inputValue }) => {
   const [selected, setSelected] = useState('CAD');
@@ -12,7 +12,7 @@ const CurrentCurrency = ({ source, inputValue }) => {
 
   const getApi = useCallback(async () => {
     try {
-      const { timestamp, quotes } = await request();
+      const { timestamp, quotes } = await requestCalcTwo();
       setDate(convertTimestampToDate(timestamp));
       setCurrency(
         convertCurrency(
@@ -33,7 +33,7 @@ const CurrentCurrency = ({ source, inputValue }) => {
   useEffect(() => {
     if (source === selected) {
       setSelected(
-        RATE_LIST.filter((rate) => rate.country !== source)[0].country,
+        SECOND_COUNTRY_LIST.filter((country) => country !== source)[0],
       );
     }
     getApi();
@@ -42,14 +42,14 @@ const CurrentCurrency = ({ source, inputValue }) => {
   return (
     <Wrap>
       <CurrencyBtnWrap>
-        {RATE_LIST.map((data, idx) => (
+        {SECOND_COUNTRY_LIST.map((data, idx) => (
           <React.Fragment key={idx}>
-            {source !== data.country && (
+            {source !== data && (
               <CurrencyBtn
-                selected={selected === data.country}
+                selected={selected === data}
                 onClick={handleCurrencyClick}
               >
-                {data.country}
+                {data}
               </CurrencyBtn>
             )}
           </React.Fragment>
