@@ -6,5 +6,5 @@ export const requestCalcOne = async () => {
 };
 
 export const requestCalcTwo = async () => {
-  return await axios.get(CALC_ONE_COUNTRIES_URL).then((response) => response.data);
+  return await axios.get(CALC_TWO_COUNTRIES_URL).then((response) => response.data);
 };

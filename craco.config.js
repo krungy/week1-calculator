@@ -12,4 +12,16 @@ module.exports = {
       '@router': path.resolve(__dirname, 'src/router'),
     },
   },
+  jest: {
+    configure: {
+      moduleNameMapper: {
+        '^\\@components/(.*)$': '<rootDir>/src/components/$1',
+        '^\\@pages/(.*)$': '<rootDir>/src/pages/$1',
+        '^\\@api/(.*)$': '<rootDir>/src/api/$1',
+        '^\\@utils/(.*)$': '<rootDir>/src/utils/$1',
+        '^\\@styles/(.*)$': '<rootDir>/src/styles/$1',
+        '^\\@router/(.*)$': '<rootDir>/src/router/$1',
+      },
+    },
+  },
 };
