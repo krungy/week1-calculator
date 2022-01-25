@@ -94,6 +94,7 @@ const FirstCalcPage = () => {
 
   const handleDropdown = (list) => {
     const entries = Object.entries(list);
+    console.log(entries);
     const menuList = entries.map(([key, _], index) => (
       <option value={key} key={index}>
         {calcOneCountryList[key]}
@@ -148,7 +149,7 @@ const FirstCalcPage = () => {
       </ResultContainer>
     ) : (
       <ResultContainer color="black">
-        수취금액은 ${resultPrice} ${currentCountry.slice(3, 6)} 입니다.
+        수취금액은 {resultPrice} {currentCountry.slice(3, 6)} 입니다.
       </ResultContainer>
     );
   }, [initialData, currentCountry, inputValue]);
