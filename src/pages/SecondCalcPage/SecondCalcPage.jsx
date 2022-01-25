@@ -3,10 +3,19 @@ import styled from 'styled-components';
 import { useState } from 'react';
 import CurrentCurrency from '@components/CurrentCurrency/CurrentCurrency';
 import SelectCurrency from '@components/SelectCurrency/SelectCurrency';
+import { inputNumberFormat } from '@utils/currency';
 
 const SecondCalcPage = () => {
   const [source, setSource] = useState('USD');
   const [inputValue, setInputValue] = useState('');
+
+  const handleOptionChange = (e) => {
+    setSource(e.target.value);
+  };
+
+  const handleInput = (e) => {
+    setInputValue(inputNumberFormat(e.target.value));
+  };
 
   return (
     <Container>
@@ -14,8 +23,8 @@ const SecondCalcPage = () => {
         <h1 className="sr-only">환율 계산기</h1>
         <SelectCurrency
           inputValue={inputValue}
-          setInputValue={setInputValue}
-          setSource={setSource}
+          handleOptionChange={handleOptionChange}
+          handleInput={handleInput}
         />
         <CurrentCurrency source={source} inputValue={inputValue} />
       </Wrap>

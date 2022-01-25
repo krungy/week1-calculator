@@ -1,17 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { RATE_LIST } from '@utils/constants';
-import { inputNumberFormat } from '@utils/currency';
 
-const SelectCurrency = ({ setSource, setInputValue, inputValue }) => {
-  const handleChange = (e) => {
-    setSource(e.target.value);
-  };
-
-  const handleInput = (e) => {
-    setInputValue(inputNumberFormat(e.target.value));
-  };
-
+const SelectCurrency = ({ handleInput, inputValue, handleOptionChange }) => {
   return (
     <Wrap>
       <input
@@ -20,7 +11,7 @@ const SelectCurrency = ({ setSource, setInputValue, inputValue }) => {
         placeholder="금액을 입력하세요."
         value={inputValue}
       />
-      <select name="currency" onChange={handleChange}>
+      <select name="currency" onChange={handleOptionChange}>
         {RATE_LIST.map((data, idx) => {
           return (
             <option value={data.country} key={idx}>

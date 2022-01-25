@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
 import { RATE_LIST } from '@utils/constants';
 import { convertTimestampToDate } from '@utils/date';
@@ -9,7 +9,8 @@ const CurrentCurrency = ({ source, inputValue }) => {
   const [selected, setSelected] = useState('CAD');
   const [date, setDate] = useState();
   const [currency, setCurrency] = useState('');
-  const getApi = async () => {
+
+  const getApi = useCallback(async () => {
     try {
       const { timestamp, quotes } = await request();
       setDate(convertTimestampToDate(timestamp));
@@ -21,9 +22,9 @@ const CurrentCurrency = ({ source, inputValue }) => {
         ),
       );
     } catch (e) {
-      console.log(e);
+      alert(`API에서 오류가 발생했습니다: ${e.message}`);
     }
-  };
+  }, [source, selected, inputValue]);
 
   const handleCurrencyClick = (e) => {
     setSelected(e.target.innerText);
@@ -36,7 +37,7 @@ const CurrentCurrency = ({ source, inputValue }) => {
       );
     }
     getApi();
-  }, [source, selected, inputValue]);
+  }, [source, selected, inputValue, getApi]);
 
   return (
     <Wrap>
