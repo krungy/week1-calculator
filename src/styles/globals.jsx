@@ -116,7 +116,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, Helvetica Neue, sans-serif;
-  background-color: #fff;
+  background-color: #f2f2f2;
 }
 
 a {
@@ -129,6 +129,16 @@ ul {
   list-style: none;
   padding: 0;
 }
+
+button {
+      background: inherit;
+      border: none;
+      box-shadow: none;
+      border-radius: 0;
+      padding: 0;
+      overflow: visible;
+      cursor: pointer;
+    }
 
 * {
   box-sizing: border-box;

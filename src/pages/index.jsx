@@ -1,7 +1,2 @@
-import React from 'react';
-
-const index = () => {
-  return <div></div>;
-};
-
-export default index;
+export { default as FirstCalcPage } from './FirstCalcPage';
+export { default as SecondCalcPage } from './SecondCalcPage';
