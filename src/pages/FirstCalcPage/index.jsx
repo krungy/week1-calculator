@@ -44,8 +44,6 @@ const SelectContainer = styled.select`
   flex-direction: column;
 `;
 
-const InputContainer = styled.input``;
-
 const ButtonContainer = styled.button`
   display: block;
   width: 68px;
@@ -64,6 +62,7 @@ const ButtonContainer = styled.button`
 
 const ResultContainer = styled.div`
   margin-top: 82px;
+  color: ${({ color }) => color};
 `;
 
 const FirstCalcPage = () => {
@@ -126,7 +125,7 @@ const FirstCalcPage = () => {
 
   const handleInputContainer = useCallback(() => {
     return (
-      <InputContainer
+      <input
         type="number"
         value={inputValue}
         onChange={(e) => handleOnChange(e)}
@@ -142,11 +141,13 @@ const FirstCalcPage = () => {
       .toString()
       .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',');
 
-    return (
-      <ResultContainer>
-        {inputValue === ''
-          ? '올바른 송금액을 입력해주세요.'
-          : `수취금액은 ${resultPrice} ${currentCountry.slice(3, 6)} 입니다.`}
+    return inputValue === '' || inputValue > 10000 ? (
+      <ResultContainer color="red">
+        올바른 송금액을 입력해주세요.
+      </ResultContainer>
+    ) : (
+      <ResultContainer color="black">
+        수취금액은 ${resultPrice} ${currentCountry.slice(3, 6)} 입니다.
       </ResultContainer>
     );
   }, [initialData, currentCountry, inputValue]);
