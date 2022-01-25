@@ -130,6 +130,16 @@ ul {
   padding: 0;
 }
 
+button {
+      background: inherit;
+      border: none;
+      box-shadow: none;
+      border-radius: 0;
+      padding: 0;
+      overflow: visible;
+      cursor: pointer;
+    }
+
 * {
   box-sizing: border-box;
 }
