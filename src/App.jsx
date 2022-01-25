@@ -1,12 +1,8 @@
 import React from 'react';
-import SecondCalcPage from '@pages/SecondCalcPage/SecondCalcPage';
+import Router from './Router';
 
 const App = () => {
-  return (
-    <>
-      <SecondCalcPage />
-    </>
-  );
+  return <Router />;
 };
 
 export default App;

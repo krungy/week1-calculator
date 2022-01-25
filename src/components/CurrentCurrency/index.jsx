@@ -74,6 +74,7 @@ const Wrap = styled.article`
   width: 100%;
   border: 3px solid black;
   border-radius: 0.5rem;
+  overflow: hidden;
 `;
 
 const CurrencyBtnWrap = styled.div`
