@@ -40,7 +40,6 @@ const Container = styled.section`
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #f2f2f2;
 `;
 
 const Wrap = styled.div`
@@ -52,6 +51,7 @@ const Wrap = styled.div`
   border: 8px solid #686868;
   border-radius: 0.5rem;
   background-color: #f5aea8;
+  box-shadow: rgb(0 0 0 / 70%) 0px 12px 40px -12px;
 `;
 
 export default SecondCalcPage;

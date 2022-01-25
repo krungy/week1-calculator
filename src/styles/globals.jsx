@@ -116,7 +116,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, Helvetica Neue, sans-serif;
-  background-color: #fff;
+  background-color: #f2f2f2;
 }
 
 a {
