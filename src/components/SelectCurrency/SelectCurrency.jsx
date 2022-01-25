@@ -1,20 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import { RATE_LIST } from '@utils/constants';
+import { inputNumberFormat } from '@utils/currency';
 
 const SelectCurrency = ({ setSource, setInputValue, inputValue }) => {
   const handleChange = (e) => {
-    //자식에서 부모 state를 바꿔도 될까?
     setSource(e.target.value);
   };
 
   const handleInput = (e) => {
-    const currentInput = e.target.value;
-    if (!/^[0-9]*$/.test(currentInput)) {
-      return;
-    }
-
-    setInputValue(e.target.value);
+    setInputValue(inputNumberFormat(e.target.value));
   };
 
   return (

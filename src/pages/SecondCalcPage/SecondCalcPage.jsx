@@ -7,7 +7,7 @@ import SelectCurrency from '@components/SelectCurrency/SelectCurrency';
 const SecondCalcPage = () => {
   const [source, setSource] = useState('USD');
   const [inputValue, setInputValue] = useState('');
-  // 로직은 컴포넌트 분리하면서 생각
+
   return (
     <Container>
       <Wrap>
@@ -17,7 +17,7 @@ const SecondCalcPage = () => {
           setInputValue={setInputValue}
           setSource={setSource}
         />
-        <CurrentCurrency source={source} />
+        <CurrentCurrency source={source} inputValue={inputValue} />
       </Wrap>
     </Container>
   );

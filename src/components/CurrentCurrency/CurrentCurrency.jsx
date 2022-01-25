@@ -2,20 +2,26 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { RATE_LIST } from '@utils/constants';
 import { convertTimestampToDate } from '@utils/date';
+import { convertCurrency } from '@utils/currency';
 import { request } from '@api/api';
 
-const CurrentCurrency = ({ source }) => {
+const CurrentCurrency = ({ source, inputValue }) => {
   const [selected, setSelected] = useState('CAD');
   const [date, setDate] = useState();
-  const [currency, setCurrency] = useState();
+  const [currency, setCurrency] = useState('');
   const getApi = async () => {
     try {
       const { timestamp, quotes } = await request();
       setDate(convertTimestampToDate(timestamp));
-      // TODO: setCurrency(utils)
+      setCurrency(
+        convertCurrency(
+          quotes[`USD${source}`],
+          quotes[`USD${selected}`],
+          inputValue.split(',').join(''),
+        ),
+      );
     } catch (e) {
       console.log(e);
-      // TODO: 에러 핸들링
     }
   };
 
@@ -30,7 +36,7 @@ const CurrentCurrency = ({ source }) => {
       );
     }
     getApi();
-  }, [source, selected]);
+  }, [source, selected, inputValue]);
 
   return (
     <Wrap>
@@ -49,7 +55,10 @@ const CurrentCurrency = ({ source }) => {
         ))}
       </CurrencyBtnWrap>
       <CurrencyResult>
-        <h2>{`${selected} 2,000.00 !FIXME`}</h2>
+        <h2>
+          <span>{selected}</span>
+          <span>{currency}</span>
+        </h2>
         <h3>기준일</h3>
         <p>{date}</p>
       </CurrencyResult>
@@ -72,12 +81,13 @@ const CurrencyBtnWrap = styled.div`
 const CurrencyBtn = styled.button`
   width: 100%;
   padding: 0.3rem 0.5rem;
-  font-size: 1rem;
-  font-weight: ${(props) => (props.selected ? 'bold' : 'normal')};
-  color: ${(props) => (props.selected ? 'black' : 'gray')};
   border-right: 3px solid black;
   border-bottom: ${(props) =>
     props.selected ? '3px solid transparent' : '3px solid black'};
+  font-size: 1rem;
+  font-weight: ${(props) => (props.selected ? 'bold' : 'normal')};
+  color: ${(props) => (props.selected ? 'black' : 'gray')};
+
   &:last-child {
     border-right: none;
   }
@@ -87,15 +97,18 @@ const CurrencyResult = styled.div`
   padding: 1.5rem;
 
   h2 {
+    display: inline-block;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
     font-size: 1.3rem;
     font-weight: bold;
-    margin-bottom: 1rem;
   }
 
   h3 {
+    margin-bottom: 0.5rem;
     font-size: 1.3rem;
     font-weight: bold;
-    margin-bottom: 0.5rem;
   }
 
   p {
