@@ -1,70 +1,91 @@
-# Getting Started with Create React App
+<h1>원티드 프리온보딩 코스 1주차 기업과제<br />
+와이어바알리/레드브릭 📈</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 🚀 배포
+## ▼▼▼▼ FIXME!!!!!!!!!!!!! ▼▼▼▼
+🔗 **과제물**(Netlify): 추가 예정
 
-## Available Scripts
+<br>
 
-In the project directory, you can run:
+## 🧑‍🤝‍🧑 팀 소개
+### 저희는 Team **박이최고** 입니다.
+팀원들의 성을 차례로 읽어보세요!
+|                                                            	| 팀원                                                	| 역할                	|
+|------------------------------------------------------------	|-----------------------------------------------------	|---------------------	|
+| ![](https://avatars.githubusercontent.com/u/77766769?s=25) 	| 박정훈 [@Junghoon-P](https://github.com/Junghoon-P) 	| 팀장, 계산기 2 구현 	|
+| ![](https://avatars.githubusercontent.com/u/27820675?s=25) 	| 이소진 [@krungy](https://github.com/krungy)         	| 계산기 1 구현       	|
+| ![](https://avatars.githubusercontent.com/u/57004991?s=25) 	| 최효정 [@hyo-choi](https://github.com/hyo-choi)     	| 계산기 2 구현       	|
+| ![](https://avatars.githubusercontent.com/u/68905615?s=25) 	| 고동현 [@brad-go](https://github.com/brad-go)       	| 계산기 1 구현       	|
 
-### `yarn start`
+<br>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🪄 프로젝트 실행 방법
+1. git clone하여 프로젝트를 내려받습니다.
+    ```bash
+    git clone https://github.com/OnBoarding-Park-is-best/week1-calculator.git
+    ```
+2. https://currencylayer.com/ 에 회원가입 후 API key를 발급받습니다.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+3. 프로젝트 root 디렉토리에 `.env` 파일을 생성하고 아래와 같이 API key를 기입합니다.
+    ```bash
+    REACT_APP_API_KEY=<발급받은 API key>
+    ```
+4. 아래 커맨드로 패키지를 설치합니다.
+    ```bash
+    yarn install
+    ```
+5. 아래 커맨드로 프로젝트를 실행합니다.
+    ```bash
+    yarn start
+    ```
+6. (optional) 아래 커맨드로 unit test를 실행할 수 있습니다.
+    ```bash
+    yarn test
+    ```
 
-### `yarn test`
+<br>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🧰 기술 스택 및 구현 사항
+![](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E) ![](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) ![](https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white)
+<br />
+![](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white) ![](https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white) 
 
-### `yarn build`
+### 전체 구현사항
+- react-router를 이용해 계산기를 각 페이지에 표시합니다.
+## ▼▼▼▼ FIXME!!!!!!!!!!!!! ▼▼▼▼
+1번 계산기도 unit test 되면 여기에, 안 되면 2번으로 옮기기
+- jest를 이용해 utils 함수의 unit test를 구현했습니다.  
+  unit test 결과는 `yarn test` command로 확인하실 수 있습니다.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 첫 번째 계산기
+- (추가 필요)
+### 두 번째 계산기
+- 두 번째 환율 계산 기능의 요구사항에 맞춰 구현했습니다.
+  - [x] 숫자만 입력할 수 있고, 단위마다 ',' 표시를 붙여주는 input
+  - [x] USD, CAD, KRW,  HKD, JPY, CNY를 포함하는 dropdown
+  - [x] 드롭다운 메뉴에서 선택된 통화가 아래 tab란에 표시되지 않도록 하는 기능
+  - [x] 드롭다운 메뉴를 이용한 통화 변경시 변경될 환율과 기준일 정보 동기화
+  - [x] 기준일 날짜 formatting
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<br>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 📂 디렉토리 구조
+## ▼▼▼▼ FIXME!!!!!!!!!!!!! ▼▼▼▼
+최종 완성본 구조 반영 필요
 
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+.
+├── public
+└── src
+    ├── api
+    ├── components
+    │   ├── CurrentCurrency
+    │   └── SelectCurrency
+    ├── pages
+    │   ├── FirstCalcPage
+    │   └── SecondCalcPage
+    ├── styles
+    ├── test
+    │   └── utils
+    └── utils
+```
