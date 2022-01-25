@@ -32,15 +32,24 @@ const Wrap = styled.div`
 
   input {
     padding: 0.3rem 0.5rem;
-    font-size: 1rem;
-    border: 3px solid black;
     margin-right: 1rem;
+    border: 3px solid black;
+    border-radius: 0.3rem;
+    font-size: 1rem;
+    background-color: #f4e8d1;
   }
 
   select {
     padding: 0.3rem 0.5rem;
-    font-size: 1rem;
     border: 3px solid black;
+    border-radius: 0.3rem;
+    font-size: 1rem;
+    background-color: #f4e8d1;
+    cursor: pointer;
+
+    &:hover {
+      filter: brightness(1.1);
+    }
   }
 `;
 

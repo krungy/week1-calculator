@@ -73,6 +73,7 @@ const Wrap = styled.article`
   justify-content: space-between;
   width: 100%;
   border: 3px solid black;
+  border-radius: 0.5rem;
 `;
 
 const CurrencyBtnWrap = styled.div`
@@ -87,15 +88,22 @@ const CurrencyBtn = styled.button`
     props.selected ? '3px solid transparent' : '3px solid black'};
   font-size: 1rem;
   font-weight: ${(props) => (props.selected ? 'bold' : 'normal')};
-  color: ${(props) => (props.selected ? 'black' : 'gray')};
+  color: ${(props) => (props.selected ? '#1b6139' : '#fff')};
+  background-color: ${(props) => (props.selected ? '#f4e8d1' : '#73737a')};
 
   &:last-child {
     border-right: none;
+  }
+
+  &:hover {
+    filter: ${(props) =>
+      props.selected ? 'brightness(1)' : 'brightness(1.2)'};
   }
 `;
 
 const CurrencyResult = styled.div`
   padding: 1.5rem;
+  background-color: #f4e8d1;
 
   h2 {
     display: inline-block;
@@ -104,11 +112,12 @@ const CurrencyResult = styled.div`
     margin-bottom: 1rem;
     font-size: 1.3rem;
     font-weight: bold;
+    color: #1b6139;
   }
 
   h3 {
-    margin-bottom: 0.5rem;
-    font-size: 1.3rem;
+    margin-bottom: 0.3rem;
+    font-size: 1.2rem;
     font-weight: bold;
   }
 

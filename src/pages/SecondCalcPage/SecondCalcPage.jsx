@@ -41,6 +41,7 @@ const Container = styled.section`
   left: 0;
   right: 0;
   bottom: 0;
+  background-color: #f2f2f2;
 `;
 
 const Wrap = styled.div`
@@ -48,8 +49,10 @@ const Wrap = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 10px;
-  border: 3px solid black;
+  padding: 1rem;
+  border: 8px solid #686868;
+  border-radius: 0.5rem;
+  background-color: #f5aea8;
 `;
 
 export default SecondCalcPage;
