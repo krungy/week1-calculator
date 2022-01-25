@@ -8,27 +8,38 @@ const FirstCalcPageContainer = styled.div`
   top: 50%;
   left: 50%;
   width: 400px;
-  height: 520px;
+  height: 460px;
   transform: translate(-50%, -50%);
-  background-color: white;
+  background-color: #d3dedc;
   box-shadow: rgb(0 0 0 / 30%) 0px 12px 40px -12px;
+  border: 8px solid #686868;
   border-radius: 12px;
   box-sizing: border-box;
-  padding: 38px 48px;
+  padding: 16px;
   text-align: center;
   word-break: keep-all;
+  font-size: 16px;
 `;
 
 const HeaderContainer = styled.h1`
   text-align: center;
   font-size: 24px;
-  margin-bottom: 36px;
+  margin-bottom: 24px;
+  padding: 8px 0;
+  border-radius: 12px;
+  background-color: #fff;
+  font-weight: 600;
 `;
 
 const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 18px;
+  border-radius: 12px;
+  background-color: #fff;
+  font-weight: 600;
+  padding: 24px;
+  box-sizing: border-box;
 `;
 
 const ItemContainer = styled.div`
@@ -42,28 +53,60 @@ const ItemContainer = styled.div`
 const SelectContainer = styled.select`
   display: inline-flex;
   flex-direction: column;
+  align-items: center;
+  border-radius: 4px;
+  padding: 4px 2px;
+  box-sizing: border-box;
+`;
+
+const InputContainer = styled.input`
+  padding: 5px 2px;
+  border: 1px solid;
+  border-radius: 4px;
+  ::-webkit-inner-spin-button {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+  }
+  ::placeholder {
+    text-align: center;
+  }
 `;
 
 const ButtonContainer = styled.button`
   display: block;
-  width: 68px;
-  height: 24px;
+  width: 108px;
+  height: 36px;
   margin: 0 auto;
-  margin-top: 36px;
   background-color: #24a19c;
   color: #fff;
   border: none;
   border-radius: 4px;
+  font-size: 16px;
   cursor: pointer;
   &:active {
     opacity: 0.6;
   }
 `;
 
+const ExchangedMoney = styled.span`
+  padding-left: 8px;
+  font-weight: 600;
+  color: #e07a5f;
+`;
+
 const ResultContainer = styled.div`
-  margin-top: 82px;
-  font-size: 16px;
-  color: ${({ color }) => color};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 16px;
+  font-size: 18px;
+  font-weight: 600;
+  background-color: #fff;
+  height: 52px;
+  padding: 12px 0;
+  border-radius: 12px;
+  line-height: 1.2;
 `;
 
 const FirstCalcPage = () => {
@@ -108,10 +151,10 @@ const FirstCalcPage = () => {
 
   const handleCurrentExchange = useCallback(() => {
     return (
-      <span>
+      <ExchangedMoney>
         {Number(initialData[currentCountry]).toFixed(2)}{' '}
         {currentCountry.slice(3, 6)}/{currentCountry.slice(0, 3)}
-      </span>
+      </ExchangedMoney>
     );
   }, [initialData, currentCountry]);
 
@@ -126,9 +169,10 @@ const FirstCalcPage = () => {
 
   const handleInputContainer = useCallback(() => {
     return (
-      <input
+      <InputContainer
         type="number"
         value={inputValue}
+        placeholder="송금액을 입력해주세요."
         onChange={(e) => handleOnChange(e)}
       />
     );
@@ -143,13 +187,11 @@ const FirstCalcPage = () => {
       .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',');
 
     return inputValue === '' || !(inputValue >= 0 && inputValue <= 10000) ? (
-      <ResultContainer color="red">
-        올바른 송금액을 입력해주세요.
-      </ResultContainer>
+      <span style={{ color: 'red' }}>올바른 송금액을 입력해주세요.</span>
     ) : (
-      <ResultContainer color="black">
+      <span>
         수취금액은 {resultPrice} {currentCountry.slice(3, 6)} 입니다.
-      </ResultContainer>
+      </span>
     );
   }, [initialData, currentCountry, inputValue]);
 
@@ -167,9 +209,19 @@ const FirstCalcPage = () => {
         <ItemContainer>
           송금액: {!isLoading && handleInputContainer()} USD
         </ItemContainer>
+        <ItemContainer
+          style={{
+            fontWeight: 400,
+            fontSize: 14,
+            justifyContent: 'center',
+            opacity: 0.4,
+          }}
+        >
+          10,000 USD 이하의 금액만 확인할 수 있습니다.
+        </ItemContainer>
         <ButtonContainer onClick={handleSubmit}>Submit</ButtonContainer>
-        {isSubmit && handleResultContainer()}
       </ContentContainer>
+      <ResultContainer>{isSubmit && handleResultContainer()}</ResultContainer>
     </FirstCalcPageContainer>
   );
 };
