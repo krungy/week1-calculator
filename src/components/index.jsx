@@ -1,7 +1,3 @@
-import React from 'react';
+export { default as CurrentCurrency } from './CurrentCurrency';
+export { default as SelectCurrency } from './SelectCurrency';
 
-const index = () => {
-  return <div></div>;
-};
-
-export default index;

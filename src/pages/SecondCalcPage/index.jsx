@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useState } from 'react';
-import CurrentCurrency from '@components/CurrentCurrency/CurrentCurrency';
-import SelectCurrency from '@components/SelectCurrency/SelectCurrency';
+import { CurrentCurrency, SelectCurrency } from '@components';
 import { inputNumberFormat } from '@utils/currency';
 
 const SecondCalcPage = () => {

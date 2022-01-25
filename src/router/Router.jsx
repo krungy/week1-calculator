@@ -1,8 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import FirstCalcPage from '@pages/FirstCalcPage';
-import SecondCalcPage from '@pages/SecondCalcPage/SecondCalcPage';
+import { FirstCalcPage, SecondCalcPage } from '@pages';
 
 const Nav = () => {
   return (
