@@ -136,6 +136,9 @@ const FirstCalcPage = () => {
   }, []);
 
   const handleDropdown = (list) => {
+    if (!list) {
+      return <p>loading...</p>;
+    }
     const entries = Object.entries(list);
     const menuList = entries.map(([key, _], index) => (
       <option value={key} key={index}>
@@ -150,6 +153,9 @@ const FirstCalcPage = () => {
   };
 
   const handleCurrentExchange = useCallback(() => {
+    if (!initialData) {
+      return <p>loading...</p>;
+    }
     return (
       <ExchangedMoney>
         {Number(initialData[currentCountry]).toFixed(2)}{' '}
