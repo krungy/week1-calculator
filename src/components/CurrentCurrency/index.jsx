@@ -11,8 +11,10 @@ const CurrentCurrency = ({ source, inputValue }) => {
   const [currency, setCurrency] = useState('');
 
   const getApi = useCallback(async () => {
+    let body;
     try {
-      const { timestamp, quotes } = await requestCalcTwo();
+      body = await requestCalcTwo();
+      const { timestamp, quotes } = body;
       setDate(convertTimestampToDate(timestamp));
       setCurrency(
         convertCurrency(
@@ -22,7 +24,7 @@ const CurrentCurrency = ({ source, inputValue }) => {
         ),
       );
     } catch (e) {
-      alert(`API에서 오류가 발생했습니다: ${e.message}`);
+      alert(`API에서 오류가 발생했습니다: ${body.error.info}`);
     }
   }, [source, selected, inputValue]);
 
