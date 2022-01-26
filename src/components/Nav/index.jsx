@@ -19,6 +19,8 @@ const Container = styled.nav`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: sticky;
+  z-index: 1000;
   gap: 1rem;
   height: 5rem;
   background-color: #f2f2f2;
