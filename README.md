@@ -2,7 +2,7 @@
 와이어바알리/레드브릭 📈</h1>
 
 ## 🚀 배포
-🔗 **과제물**(Netlify): 추가 예정
+🔗 **과제물**(aws s3): http://calculator-park-is-best.s3-website.ap-northeast-2.amazonaws.com/
 
 <br>
 
